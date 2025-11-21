@@ -49,13 +49,14 @@ namespace CPUWindowsFormFramework
 
         public static void FormatGridForEdit(DataGridView grid, string tablename)
         {
+            grid.ReadOnly = false;
             grid.EditMode = DataGridViewEditMode.EditOnEnter;
             DoFormatGrid(grid, tablename);
         }
 
         private static void DoFormatGrid(DataGridView grid, string tablename)
         {
-            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grid.RowHeadersWidth = 25;
             foreach (DataGridViewColumn col in grid.Columns)
             {
@@ -102,6 +103,7 @@ namespace CPUWindowsFormFramework
             c.ValueMember = tablename +"Id";
             c.DataPropertyName = c.ValueMember;
             c.HeaderText = tablename;
+            c.ReadOnly = false;
             grid.Columns.Insert(0, c);
         }
 
